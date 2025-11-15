@@ -4,114 +4,78 @@ import { useState } from "react";
 
 type ButtonConfig = {
   label: string;
-  action?: "number" | "operator" | "decimal" | "equal" | "clear";
+  action: "number" | "operator" | "decimal" | "equal" | "clear";
   className?: string;
 };
 
-const buttonLayout: ButtonConfig[][] = [
-  [
-    { label: "7", action: "number" },
-    { label: "8", action: "number" },
-    { label: "9", action: "number" },
-    { label: "/", action: "operator" },
-  ],
-  [
-    { label: "4", action: "number" },
-    { label: "5", action: "number" },
-    { label: "6", action: "number" },
-    { label: "*", action: "operator" },
-  ],
-  [
-    { label: "1", action: "number" },
-    { label: "2", action: "number" },
-    { label: "3", action: "number" },
-    { label: "-", action: "operator" },
-  ],
-  [
-    { label: "0", action: "number" },
-    { label: ".", action: "decimal" },
-    {
-      label: "=",
-      action: "equal",
-      className: "bg-green-500 hover:bg-green-800 text-white",
-    },
-    { label: "+", action: "operator" },
-  ],
+const buttons: ButtonConfig[] = [
+  { label: "7", action: "number" }, { label: "8", action: "number" }, { label: "9", action: "number" }, { label: "/", action: "operator" },
+  { label: "4", action: "number" }, { label: "5", action: "number" }, { label: "6", action: "number" }, { label: "*", action: "operator" },
+  { label: "1", action: "number" }, { label: "2", action: "number" }, { label: "3", action: "number" }, { label: "-", action: "operator" },
+  { label: "0", action: "number" }, { label: ".", action: "decimal" },
+  { label: "=", action: "equal", className: "bg-green-900 hover:bg-green-700 text-white" },
+  { label: "+", action: "operator" },
 ];
 
 export default function Home() {
-  const [currentInput, setCurrentInput] = useState<string>("");
-  const [previousInput, setPreviousInput] = useState<string>("");
-  const [operator, setOperator] = useState<string>("");
+  const [current, setCurrent] = useState("");
+  const [previous, setPrevious] = useState("");
+  const [operator, setOperator] = useState("");
 
-  const handleClick = (btn: ButtonConfig) => {
-    const { label, action } = btn;
-
+  const handleClick = ({ label, action }: ButtonConfig) => {
     switch (action) {
       case "number":
-        setCurrentInput(currentInput + label);
+        setCurrent((v) => v + label);
         break;
       case "operator":
-        if (!currentInput) return;
+        if (!current) return;
         setOperator(label);
-        setPreviousInput(currentInput);
-        setCurrentInput("");
+        setPrevious(current);
+        setCurrent("");
         break;
       case "decimal":
-        if (!currentInput.includes(".")) {
-          setCurrentInput(currentInput + ".");
-        }
+        if (!current.includes(".")) setCurrent((v) => v + ".");
         break;
       case "equal":
-        if (previousInput && currentInput && operator) {
+        if (previous && current && operator) {
           try {
             // eslint-disable-next-line no-eval
-            const result = eval(`${previousInput}${operator}${currentInput}`);
-            setCurrentInput(String(result));
-            setPreviousInput("");
+            setCurrent(String(eval(`${previous}${operator}${current}`)));
+            setPrevious("");
             setOperator("");
           } catch {
-            setCurrentInput("Error");
+            setCurrent("Error");
           }
         }
         break;
       case "clear":
-        clearAll();
+        setCurrent(""); setPrevious(""); setOperator("");
         break;
     }
   };
 
-  const clearAll = () => {
-    setCurrentInput("");
-    setPreviousInput("");
-    setOperator("");
-  };
-
   return (
-    <div className="bg-[#1e3231] h-screen w-screen flex justify-center items-center font-[cursive] text-[20px] font-bold">
-      <div className="bg-[#485665] w-[90vw] sm:w-[400px] p-6 rounded-xl flex flex-col items-center">
-        {/* Display */}
-        <div className="bg-black text-white rounded-lg w-full h-12 px-4 py-2 text-right mb-4 overflow-hidden">
-          {currentInput || operator || "0"}
+    <div className="h-screen w-screen flex justify-center items-center font-[cursive] text-xl font-bold">
+      <div className="bg-black/50 backdrop-blur-md w-[90vw] sm:w-[400px] p-6 rounded-2xl flex flex-col items-center shadow-2xl">
+        <div className="bg-black text-white rounded-lg w-full h-14 px-4 py-2 text-right mb-4 overflow-hidden text-2xl">
+          {current || operator || "0"}
         </div>
 
-        {/* Button Grid */}
         <div className="grid grid-cols-4 gap-3 w-full mb-4">
-          {buttonLayout.flat().map((btn) => (
+          {buttons.map((btn) => (
             <button
               key={btn.label}
               onClick={() => handleClick(btn)}
-              className={`rounded-lg text-[24px] bg-gray-400 hover:bg-gray-700 hover:text-white transition py-2 ${btn.className || ""}`}
+              className={`rounded-lg text-2xl bg-black hover:bg-gray-900 cursor-pointer transition py-2 ${btn.className || ""}`}
             >
               {btn.label}
             </button>
           ))}
         </div>
 
-        {/* Clear Button */}
         <button
           onClick={() => handleClick({ label: "C", action: "clear" })}
-          className="w-full bg-red-600 hover:bg-red-800 text-white py-2 rounded-lg transition"
+          className="w-full bg-red-900 hover:bg-red-800 cursor-pointer text-white py-2 rounded-lg transition"
         >
           Clear
         </button>
