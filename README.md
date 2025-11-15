@@ -23,6 +23,7 @@ The migration improves maintainability, scalability, and developer experience wh
 ---
 
 ## Deployment
+🔗 [Live Site on Netlify](https://ayeshaas-scal.netlify.app/)  
 
 
 ---
