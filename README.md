@@ -1,6 +1,6 @@
-# Standard Calculator
+# Calcify - Standard Calculator
 
-A **Standard Calculator** application migrated from plain **HTML, CSS, JavaScript** to **Next.js + TypeScript**.  
+A **Calcify - Standard Calculator** application migrated from plain **HTML, CSS, JavaScript** to **Next.js + TypeScript**.  
 The migration improves maintainability, scalability, and developer experience while keeping the core calculator logic intact.
 
 ---
