@@ -1,37 +1,71 @@
-# Calcify - Standard Calculator
+# 🧮 Calcify - Calculator Application
 
-A **Calcify - Standard Calculator** application migrated from plain **HTML, CSS, JavaScript** to **Next.js + TypeScript**.  
-The migration improves maintainability, scalability, and developer experience while keeping the core calculator logic intact.
+A modern calculator application built using **Next.js, React, TypeScript, and Tailwind CSS**.
 
----
+Calcify provides a responsive and interactive interface for performing real-time arithmetic operations with a clean and minimal user experience.
 
-## 🚀 Features
-- ✅ Basic arithmetic operations (add, subtract, multiply, divide)  
-- ✅ Clean and responsive UI  
-- ✅ Built with **Next.js (App Router)** for performance and structure  
-- ✅ Fully typed with **TypeScript** for better safety  
-- ✅ Modular components for better code reusability  
+## 🌐 Live Demo
+
+https://ayeshaas-scal.netlify.app/
 
 ---
 
-## 🛠️ Tech Stack
-- **Next.js** – React framework with SSR/SSG  
-- **TypeScript** – Strong typing and improved tooling  
-- **React** – Component-based UI  
-- **CSS Modules / Tailwind CSS** *(depending on your styling choice)*  
+## ✨ Features
+
+- Real-time arithmetic calculations
+- Responsive calculator layout
+- Interactive button-based input
+- Dynamic display updates
+- Clean modern UI
+- Keyboard-like calculator experience
+- Smooth user interactions
 
 ---
 
-## Deployment
-🔗 [Live Site on Netlify](https://ayeshaas-scal.netlify.app/)  
+## 🚀 Tech Stack
 
-
----
-
-## License
-
-- This project is for educational/demo purposes only.
+- Next.js 15
+- React 19
+- TypeScript
+- Tailwind CSS
+- Lucide React Icons
 
 ---
 
-- Built with ❤️ by Ayesha Ali while learning Next.js, TypeScript, and Tailwind.
+## 📸 Screenshots
+
+![calcify-ui](<calcify-ui.png>)
+
+---
+
+## 🧠 What I Learned
+
+- Managing dynamic state updates in React
+- Handling arithmetic operations programmatically
+- Building interactive UI functionality
+- Working with conditional rendering
+- Structuring applications using Next.js
+- Creating responsive layouts with Tailwind CSS
+- Improving frontend logic handling and user interaction flow
+
+This project improved my understanding of state-driven frontend functionality and real-time UI behavior.
+
+---
+
+## 💡 Future Improvements
+
+- Scientific calculator mode
+- Keyboard input support
+- Calculation history
+- Theme customization
+- Advanced mathematical operations
+- Memory functions
+- Mobile optimization improvements
+
+---
+
+## 👩‍💻 Author
+
+**Ayesha Ansari**
+
+Built with ❤️ using Next.js and Tailwind CSS
